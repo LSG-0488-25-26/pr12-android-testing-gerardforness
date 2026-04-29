@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Copy-Item \"$env:USERPROFILE\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2026-04-29 222012.png\" 'docs\\\\images\\\\app-overview.png' -Force; Get-Item 'docs\\\\images\\\\app-overview.png' | Format-Table Name, Length -AutoSize)"
+      "PowerShell(Copy-Item \"$env:USERPROFILE\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2026-04-29 222012.png\" 'docs\\\\images\\\\app-overview.png' -Force; Get-Item 'docs\\\\images\\\\app-overview.png' | Format-Table Name, Length -AutoSize)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\Videos\" -ErrorAction SilentlyContinue | Format-Table Name, Length, LastWriteTime -AutoSize)",
+      "PowerShell($candidates = @\\('C:\\\\Program Files\\\\obs-studio', 'C:\\\\Program Files \\(x86\\)\\\\obs-studio', 'C:\\\\Program Files\\\\ffmpeg', 'C:\\\\ffmpeg'\\); foreach \\($c in $candidates\\) { if \\(Test-Path $c\\) { Write-Host \"FOUND: $c\"; Get-ChildItem $c -Filter 'ffmpeg.exe' -Recurse -ErrorAction SilentlyContinue | Select-Object -First 2 FullName } }; Write-Host \"---winget---\"; Get-Command winget -ErrorAction SilentlyContinue | Select-Object Source)",
+      "PowerShell(New-Item -ItemType Directory -Path 'docs\\\\videos' -Force | Out-Null; Copy-Item \"$env:USERPROFILE\\\\Videos\\\\androidTesting.mkv\" 'docs\\\\videos\\\\androidTesting.mkv' -Force; Get-Item 'docs\\\\videos\\\\androidTesting.mkv' | Format-Table Name, Length -AutoSize)"
     ]
   }
 }

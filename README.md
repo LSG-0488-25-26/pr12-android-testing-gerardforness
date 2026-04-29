@@ -7,6 +7,12 @@
 
 App d'exemple desenvolupada en **Kotlin + Jetpack Compose** seguint el patró **MVVM**, amb tests unitaris (JUnit) i tests d'interfície (Compose UI Testing + Espresso).
 
+## Demo
+
+<video src="docs/videos/androidTesting.mkv" controls width="320"></video>
+
+> Si el reproductor no es veu al teu navegador (GitHub no preveu inline `.mkv`), pots [descarregar el vídeo aquí](docs/videos/androidTesting.mkv).
+
 ## Captura de l'app
 
 ![App](docs/images/app-overview.png)
