@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Copy-Item \"$env:USERPROFILE\\\\Pictures\\\\Screenshots\\\\Captura de pantalla 2026-04-29 222012.png\" 'docs\\\\images\\\\app-overview.png' -Force; Get-Item 'docs\\\\images\\\\app-overview.png' | Format-Table Name, Length -AutoSize)"
+    ]
+  }
+}
