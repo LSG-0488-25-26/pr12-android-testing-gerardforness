@@ -30,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -71,7 +72,9 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                 Switch(
                     checked = estatSwitch,
                     onCheckedChange = { myViewModel.toggleEstatSwitch() },
-                    modifier = Modifier.fillMaxWidth(0.4f),
+                    modifier = Modifier
+                        .fillMaxWidth(0.4f)
+                        .testTag("switch_id"),
                     enabled = true,
                     colors = SwitchDefaults.colors(
                         uncheckedThumbColor = Color.LightGray,
@@ -108,7 +111,9 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                     Checkbox(
                         checked = esCarnivor,
                         onCheckedChange = { myViewModel.toggleEsCarnivor() },
-                        modifier = Modifier.fillMaxWidth(0.20f),
+                        modifier = Modifier
+                            .fillMaxWidth(0.20f)
+                            .testTag("checkboxCarnivor_id"),
                         enabled = false,
                         colors = CheckboxDefaults.colors(
                             uncheckedColor = Color.LightGray,
@@ -118,7 +123,9 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                     Checkbox(
                         checked = esVegetaria,
                         onCheckedChange = { myViewModel.toggleEsVegetaria() },
-                        modifier = Modifier.fillMaxWidth(0.33f),
+                        modifier = Modifier
+                            .fillMaxWidth(0.33f)
+                            .testTag("checkboxVegetaria_id"),
                         enabled = true,
                         colors = CheckboxDefaults.colors(
                             uncheckedColor = Color.LightGray,
@@ -128,7 +135,9 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                     Checkbox(
                         checked = esVega,
                         onCheckedChange = { myViewModel.toggleEsVega() },
-                        modifier = Modifier.fillMaxWidth(0.33f),
+                        modifier = Modifier
+                            .fillMaxWidth(0.33f)
+                            .testTag("checkboxVega_id"),
                         enabled = true,
                         colors = CheckboxDefaults.colors(
                             uncheckedColor = Color.LightGray,
@@ -142,7 +151,8 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                 Text("TriState", Modifier.fillMaxWidth(), fontSize = 20.sp)
                 TriStateCheckbox(
                     state = triStateStatus,
-                    onClick = { myViewModel.toggleTriStateStatus() }
+                    onClick = { myViewModel.toggleTriStateStatus() },
+                    modifier = Modifier.testTag("triStateCheckbox_id")
                 )
             }
 
@@ -159,6 +169,7 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                             selected = selectedOption == player,
                             onClick = { myViewModel.setSelectedOption(player) },
                             enabled = player != "Vinicius",
+                            modifier = Modifier.testTag("radio_${player.replace(" ", "")}_id"),
                             colors = RadioButtonDefaults.colors(
                                 selectedColor = Color.Black,
                                 unselectedColor = Color.LightGray
@@ -169,17 +180,23 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                 }
             }
 
-            Text("Volum: ${sliderValue.toInt()}%")
+            Text(
+                text = "Volum: ${sliderValue.toInt()}%",
+                modifier = Modifier.testTag("volumText_id")
+            )
             Slider(
                 value = sliderValue,
                 onValueChange = { myViewModel.setSliderValue(it) },
-                valueRange = 0f..100f
+                valueRange = 0f..100f,
+                modifier = Modifier.testTag("slider_id")
             )
 
             Box(modifier = Modifier.wrapContentSize()) {
                 Text(
                     text = selectedItem,
-                    modifier = Modifier.clickable { myViewModel.setExpanded(true) }
+                    modifier = Modifier
+                        .testTag("dropdownText_id")
+                        .clickable { myViewModel.setExpanded(true) }
                 )
                 DropdownMenu(
                     expanded = expanded,
@@ -201,21 +218,26 @@ fun MainView(myViewModel: MainViewModel, modifier: Modifier = Modifier) {
                 value = searchText,
                 onValueChange = { myViewModel.setSearchText(it) },
                 label = { Text("Buscar...") },
-                modifier = Modifier
+                modifier = Modifier.testTag("searchTextField_id")
             )
-            Button(onClick = { myViewModel.performSearch() }) {
+            Button(
+                onClick = { myViewModel.performSearch() },
+                modifier = Modifier.testTag("buscarButton_id")
+            ) {
                 Text("Buscar")
             }
 
             if (showSnackbar) {
                 Text(
                     text = "Acció completada!",
-                    color = Color.Green
+                    color = Color.Green,
+                    modifier = Modifier.testTag("snackbarText_id")
                 )
             }
 
             Button(
                 onClick = { myViewModel.toggle() },
+                modifier = Modifier.testTag("toggleButton_id"),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (toggleState) Color.Green else Color.Red
                 )
