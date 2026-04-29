@@ -9,9 +9,7 @@ App d'exemple desenvolupada en **Kotlin + Jetpack Compose** seguint el patró **
 
 ## Demo
 
-<video src="docs/videos/androidTesting.mkv" controls width="320"></video>
-
-> Si el reproductor no es veu al teu navegador (GitHub no preveu inline `.mkv`), pots [descarregar el vídeo aquí](docs/videos/androidTesting.mkv).
+[![Veure demo a YouTube](https://img.shields.io/badge/YouTube-Veure%20demo-FF0000?logo=youtube&logoColor=white)](https://youtu.be/n_Ggh_i1wUY)
 
 ## Captura de l'app
 
